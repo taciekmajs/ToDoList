@@ -1,14 +1,34 @@
-namespace ToDoList.Views;
+using ToDoList.Models;
+using ToDoList.Repositories;
 
-public partial class AddTaskPage : ContentPage
+namespace ToDoList.Views
 {
-	public AddTaskPage()
-	{
-		InitializeComponent();
-	}
-
-    private void btnAddTask_Clicked(object sender, EventArgs e)
+    public partial class AddAssignmentPage : ContentPage
     {
-		Shell.Current.GoToAsync("..");
+
+        public AddAssignmentPage()
+        {
+            InitializeComponent();
+        }
+
+        private void btnAddAssignment_Clicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(AssignmentName.Text))
+            {
+                DisplayAlert("Error", "Assignment title cannot be empty!", "OK");
+                return;
+            }
+
+            var newAssignment = new Assignment
+            {
+                Name = AssignmentName.Text,
+                Details = AssignmentDetails.Text ?? string.Empty,
+                IsCompleted = false
+            };
+            
+            AssignmentRepository.AddAssignment(newAssignment);
+            DisplayAlert("Success", "Assignment added!", "OK");
+            Navigation.PopAsync(); // Wraca do poprzedniego widoku
+        }
     }
 }
