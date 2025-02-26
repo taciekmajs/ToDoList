@@ -28,7 +28,7 @@ namespace ToDoList.Views
             
             AssignmentRepository.AddAssignment(newAssignment);
             DisplayAlert("Success", "Assignment added!", "OK");
-            Navigation.PopAsync(); // Wraca do poprzedniego widoku
+            Navigation.PopAsync(); 
         }
     }
 }
