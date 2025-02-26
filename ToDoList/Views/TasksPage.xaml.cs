@@ -1,3 +1,5 @@
+using ToDoList.Models;
+
 namespace ToDoList.Views;
 
 public partial class TasksPage : ContentPage
@@ -5,11 +7,11 @@ public partial class TasksPage : ContentPage
 	public TasksPage()
 	{
 		InitializeComponent();
-		List<TaskPlaceHolder> placeholders = new List<TaskPlaceHolder>
+		List<Assignment> placeholders = new List<Assignment>
 		{
-			new TaskPlaceHolder() {TaskName = "Zapotrzebowanie kaloryczne", TaskDetails = "Zjeœæ 3400kcal, w tym mniej ni¿ 60g cukru i mniej ni¿ 80g t³uszczu"},
-			new TaskPlaceHolder() {TaskName = "Nauka szachowa", TaskDetails = "Nauczyæ siê gambitu wiedeñskeigo"},
-			new TaskPlaceHolder() {TaskName = "Potê¿ny riff", TaskDetails = "Napisaæ catchy riff, do którego w koñcu zrobi¹ œcainê"}
+			new Assignment() {Id = 1, Name = "Zapotrzebowanie kaloryczne", Details = "Zjeœæ 3400kcal, w tym mniej ni¿ 60g cukru i mniej ni¿ 80g t³uszczu", IsCompleted = false},
+			new Assignment() {Id = 2, Name = "Nauka szachowa", Details = "Nauczyæ siê gambitu wiedeñskeigo", IsCompleted = true},
+			new Assignment() {Id = 3, Name = "Potê¿ny riff", Details = "Napisaæ catchy riff, do którego w koñcu zrobi¹ œcainê", IsCompleted = false}
 		};
 		tasksList.ItemsSource = placeholders;
 	}
@@ -18,10 +20,4 @@ public partial class TasksPage : ContentPage
     {
 		Shell.Current.GoToAsync(nameof(AddTaskPage));
     }
-
-	public class TaskPlaceHolder()
-	{
-		public string TaskName { get; set; }
-		public string? TaskDetails { get; set; }
-	}
 }
