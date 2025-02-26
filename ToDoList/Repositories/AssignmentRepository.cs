@@ -26,6 +26,9 @@ namespace ToDoList.Repositories
         public static void AddAssignment(Assignment assignment)
         {
             var assignments = GetAllAssignments();
+            var highestIdAssignment = assignments.MaxBy(assignment => assignment.Id);
+            int newId = highestIdAssignment == null ? 0 : highestIdAssignment.Id + 1;
+            assignment.Id = newId;
             assignments.Add(assignment);
             SaveAssignments(assignments);
         }

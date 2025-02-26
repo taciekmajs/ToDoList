@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ToDoList.Views.AddTaskPage"
-             Title="AddTaskPage">
-    <VerticalStackLayout Padding="5" Spacing="5">
+             x:Class="ToDoList.Views.AddAssignmentPage"
+             Title="Add Assignment">
+    <VerticalStackLayout Padding="10" Spacing="10">
 
-        <Label Text="Task title:" FontSize="16" />
-        <Entry x:Name="TaskName"/>
+        <Label Text="Assignment title:" FontSize="16" />
+        <Entry x:Name="AssignmentName" Placeholder="Enter title" />
 
-        <Label Text="Task details (optional)" FontSize="16" />
-        <Editor x:Name="TaskDetails" AutoSize="TextChanges" />
-        
-        <Button x:Name="btnAddTask" Clicked="btnAddTask_Clicked" Text="Add Task"/>
+        <Label Text="Assignment details (optional)" FontSize="16" />
+        <Editor x:Name="AssignmentDetails" AutoSize="TextChanges" Placeholder="Enter details" />
+
+        <Button x:Name="btnAddAssignment" Clicked="btnAddAssignment_Clicked" Text="Add Assignment"/>
 
     </VerticalStackLayout>
 </ContentPage>

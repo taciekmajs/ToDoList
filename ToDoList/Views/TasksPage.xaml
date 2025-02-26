@@ -1,40 +1,54 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ToDoList.Views.TasksPage"
-             Title="TasksPage">
+             x:Class="ToDoList.Views.AssignmentsPage"
+             Title="Your Assignments">
     <VerticalStackLayout Spacing="5">
         <Label 
             FontSize="40"
             FontAttributes="Bold"
-            Text="Your tasks:"
+            Text="Your assignments:"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
         <ListView 
-            x:Name="tasksList"
-            BackgroundColor="Transparent">
+            x:Name="assignmentsList"
+            BackgroundColor="Transparent"
+            ItemsSource="{Binding Assignments}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid Padding="10" ColumnDefinitions="4*,1*" RowDefinitions="Auto, Auto">
                             <Label Text="{Binding Name}" 
-                           FontSize="20" 
-                           FontAttributes="Bold" 
-                           Grid.Row="0" 
-                           Grid.Column="0" />
+                                   FontSize="20" 
+                                   FontAttributes="Bold" 
+                                   Grid.Row="0" 
+                                   Grid.Column="0" />
 
                             <Label Text="{Binding Details}" 
-                           FontSize="14" 
-                           TextColor="Gray" 
-                           Grid.Row="1" 
-                           Grid.Column="0" />
+                                   FontSize="14" 
+                                   TextColor="Gray" 
+                                   Grid.Row="1" 
+                                   Grid.Column="0" />
 
-                            <StackLayout  Grid.RowSpan="2" Grid.Column="1" VerticalOptions="Center">
+                            <StackLayout Grid.RowSpan="2" Grid.Column="1" VerticalOptions="Center">
                                 <Button Text="Done" 
-                                FontSize="14"/>
+                                        FontSize="14"
+                                        Clicked="OnAssignmentDone"
+                                        CommandParameter="{Binding Id}">
+                                    <Button.Triggers>
+                                        <DataTrigger TargetType="Button" Binding="{Binding IsCompleted}" Value="True">
+                                            <Setter Property="Text" Value="Not Done"/>
+                                            <Setter Property="BackgroundColor" Value="Red"/>
+                                            <Setter Property="TextColor" Value="White"/>
+                                        </DataTrigger>
+                                    </Button.Triggers>
+                                </Button>
 
-                                <Button Text="Remove"
-                                FontSize="14"/>
+                                    <Button Text="Remove"
+                                        FontSize="14"
+                                        Clicked="OnAssignmentRemoved"
+                                        CommandParameter="{Binding Id}"/>
                             </StackLayout>
                         </Grid>
                     </ViewCell>
@@ -42,8 +56,8 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button x:Name="AddTaskBtn"
-            Text="Add task" 
-            Clicked="AddTaskBtn_Clicked"/>
+        <Button x:Name="AddAssignmentBtn"
+                Text="Add Assignment" 
+                Clicked="AddAssignmentBtn_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>
