@@ -17,13 +17,13 @@
                 <DataTemplate>
                     <ViewCell>
                         <Grid Padding="10" ColumnDefinitions="4*,1*" RowDefinitions="Auto, Auto">
-                            <Label Text="{Binding TaskName}" 
+                            <Label Text="{Binding Name}" 
                            FontSize="20" 
                            FontAttributes="Bold" 
                            Grid.Row="0" 
                            Grid.Column="0" />
 
-                            <Label Text="{Binding TaskDetails}" 
+                            <Label Text="{Binding Details}" 
                            FontSize="14" 
                            TextColor="Gray" 
                            Grid.Row="1" 
