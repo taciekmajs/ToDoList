@@ -65,10 +65,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\AddTaskPage.xaml">
+	  <Compile Update="Views\AddAssignmentPage.xaml.cs">
+	    <DependentUpon>AddAssignmentPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\AssignmentsPage.xaml.cs">
+	    <DependentUpon>AssignmentsPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\AddAssignmentPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TasksPage.xaml">
+	  <MauiXaml Update="Views\AssignmentsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
