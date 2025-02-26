@@ -6,4 +6,9 @@ public partial class AddTaskPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void btnAddTask_Clicked(object sender, EventArgs e)
+    {
+		Shell.Current.GoToAsync("..");
+    }
 }

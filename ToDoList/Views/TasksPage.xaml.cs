@@ -16,7 +16,7 @@ public partial class TasksPage : ContentPage
 
     private void AddTaskBtn_Clicked(object sender, EventArgs e)
     {
-
+		Shell.Current.GoToAsync(nameof(AddTaskPage));
     }
 
 	public class TaskPlaceHolder()
