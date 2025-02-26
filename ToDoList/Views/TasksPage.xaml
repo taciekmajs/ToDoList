@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoList.Views.TasksPage"
+             Title="TasksPage">
+    <VerticalStackLayout Spacing="5">
+        <Label 
+            FontSize="40"
+            FontAttributes="Bold"
+            Text="Your tasks:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ListView 
+            x:Name="tasksList"
+            BackgroundColor="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10" ColumnDefinitions="4*,1*" RowDefinitions="Auto, Auto">
+                            <Label Text="{Binding TaskName}" 
+                           FontSize="20" 
+                           FontAttributes="Bold" 
+                           Grid.Row="0" 
+                           Grid.Column="0" />
+
+                            <Label Text="{Binding TaskDetails}" 
+                           FontSize="14" 
+                           TextColor="Gray" 
+                           Grid.Row="1" 
+                           Grid.Column="0" />
+
+                            <StackLayout  Grid.RowSpan="2" Grid.Column="1" VerticalOptions="Center">
+                                <Button Text="Done" 
+                                FontSize="14"/>
+
+                                <Button Text="Remove"
+                                FontSize="14"/>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button x:Name="AddTaskBtn"
+            Text="Add task" 
+            Clicked="AddTaskBtn_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>
