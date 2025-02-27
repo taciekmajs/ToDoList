@@ -27,7 +27,6 @@ namespace ToDoList.Views
             };
             
             AssignmentRepository.AddAssignment(newAssignment);
-            DisplayAlert("Success", "Assignment added!", "OK");
             Navigation.PopAsync(); 
         }
     }
