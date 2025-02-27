@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ToDoList.Views.AssignmentsPage"
              Title="Your Assignments">
-    <VerticalStackLayout Spacing="5">
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="10">
         <Label 
             FontSize="40"
             FontAttributes="Bold"
@@ -14,11 +15,12 @@
         <ListView 
             x:Name="assignmentsList"
             BackgroundColor="Transparent"
-            ItemsSource="{Binding Assignments}">
+            ItemsSource="{Binding Assignments}"
+            HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Padding="10" ColumnDefinitions="4*,1*" RowDefinitions="Auto, Auto">
+                        <Grid Padding="10" ColumnDefinitions="7*,2*" RowDefinitions="Auto, Auto">
                             <Label Text="{Binding Name}" 
                                    FontSize="20" 
                                    FontAttributes="Bold" 
@@ -31,15 +33,16 @@
                                    Grid.Row="1" 
                                    Grid.Column="0" />
 
-                            <StackLayout Grid.RowSpan="2" Grid.Column="1" VerticalOptions="Center">
-                                <Button Text="Done" 
+                            <StackLayout Grid.RowSpan="2" Grid.Column="1" VerticalOptions="Center" Spacing="10">
+                                    <Button Text="X" 
+                                        BackgroundColor="Red"
                                         FontSize="14"
                                         Clicked="OnAssignmentDone"
                                         CommandParameter="{Binding Id}">
                                     <Button.Triggers>
                                         <DataTrigger TargetType="Button" Binding="{Binding IsCompleted}" Value="True">
-                                            <Setter Property="Text" Value="Not Done"/>
-                                            <Setter Property="BackgroundColor" Value="Red"/>
+                                            <Setter Property="Text" Value="✓"/>
+                                            <Setter Property="BackgroundColor" Value="Green"/>
                                             <Setter Property="TextColor" Value="White"/>
                                         </DataTrigger>
                                     </Button.Triggers>
@@ -60,4 +63,5 @@
                 Text="Add Assignment" 
                 Clicked="AddAssignmentBtn_Clicked"/>
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
